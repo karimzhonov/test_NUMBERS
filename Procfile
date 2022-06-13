@@ -1,1 +1,1 @@
-worker: gunicorn -c gunicorn.py project.wsgi
+worker: gunicorn project.wsgi --bind 0.0.0.0:8000
