@@ -12,8 +12,6 @@ services:
     volumes:
       - ./project:/app # Valume for not restarting docker container while coding
       - static_vol:/app/static # Static value
-    depends_on:
-      - redis
     command: gunicorn -c gunicorn.py project.wsgi
 
   nginx:
@@ -26,20 +24,13 @@ services:
     depends_on:
       - web
 
-  redis:
-    container_name: redis
-    image: redis:alpine
-
-  celery:
-    container_name: celery
+  schedule:
+    container_name: schedule
     build: ./project
     restart: always
     volumes:
       - ./project:/app # Valume for not restarting docker container while coding
-      - static_vol:/app/static
-    depends_on:
-      - redis
-    command: celery -A project.celery worker --loglevel=info
+    command: python manage.py runtasks
 
 volumes:
   static_vol:

@@ -1,7 +1,14 @@
-from celery import Celery
-from celery.schedules import schedule
+import time
+import schedule
+
+from project.logger import logger
 from .update_database import update_database
 
+schedule.every(5).seconds.do(update_database)
 
-def setup(app: Celery):
-    app.add_periodic_task(schedule(5), app.task(update_database).s(), name='Update Database')
+
+def start():
+    logger.info('Manager tasks started')
+    while True:
+        schedule.run_pending()
+        time.sleep(0.1)

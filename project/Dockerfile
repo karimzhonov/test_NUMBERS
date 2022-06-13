@@ -16,5 +16,4 @@ ENV DATABASE_URL='postgres://amgylpdxwcbsvn:0083b17961ab904d1b43d250d746c5129ca3
 ENV GOOGLE_SHEET_ID='1_qARCaIOTcXhny9NXHHkdAm1-OFjlfDeZGrMoQFRuQM'
 
 RUN pip install -r requirements.txt
-RUN python manage.py migrate
 RUN python manage.py collectstatic
