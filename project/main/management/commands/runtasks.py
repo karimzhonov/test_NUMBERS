@@ -1,3 +1,4 @@
+"""python manage.py runtasks - Run schedules"""
 from django.core.management.base import BaseCommand
 from main import tasks
 
