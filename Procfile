@@ -1,0 +1,1 @@
+worker: gunicorn -c gunicorn.py project.wsgi
