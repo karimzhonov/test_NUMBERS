@@ -1,2 +1,2 @@
-web: gunicorn -c project/gunicorn.py project.project.wsgi --preload
+web: cd project && gunicorn -c gunicorn.py project.wsgi --preload
 worker: python project/manage.py runtasks
