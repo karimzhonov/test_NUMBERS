@@ -1,1 +1,1 @@
-worker: gunicorn -c gunicorn.py project.project.wsgi
+web: gunicorn -c gunicorn.py project.project.wsgi
