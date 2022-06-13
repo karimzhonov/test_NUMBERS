@@ -4,7 +4,7 @@
 Результат ([Google Sheet](https://docs.google.com/spreadsheets/d/1_qARCaIOTcXhny9NXHHkdAm1-OFjlfDeZGrMoQFRuQM/edit#gid=1844212246)): 
 [kht-test-numbers.herokuapp.com](https://kht-test-numbers.herokuapp.com/)
 
-Админка (login=root, pssword=9009) [kht-test-numbers.herokuapp.com/admin](https://kht-test-numbers.herokuapp.com/admin)
+Админка (login=root, password=9009) [kht-test-numbers.herokuapp.com/admin](https://kht-test-numbers.herokuapp.com/admin)
 
 ![Python](https://img.shields.io/badge/-Python-black?style=flat-square&logo=Python)
 ![Django](https://img.shields.io/badge/-Django-0aad48?style=flat-square&logo=Django)
