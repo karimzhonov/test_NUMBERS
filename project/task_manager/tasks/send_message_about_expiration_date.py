@@ -2,10 +2,10 @@ import os
 import requests
 from datetime import date
 from project.logger import logger
-from ..models import Product
+from main.models import Order
 
 
-def send_message(product: Product):
+def send_message(product: Order):
     token = os.environ.get('TOKEN_BOT')
     # Request to Telegram api
     response = requests.post(
@@ -22,7 +22,7 @@ def send_message_about_expiration_date():
     """Send message about expiration date of order"""
     logger.info('Start checking products delivery date')
     # Get all orders which not alerted about expiration date
-    for product in Product.objects.filter(is_alerted_about_delivery_date=False):
+    for product in Order.objects.filter(is_alerted_about_delivery_date=False):
         if product.delivery_date < date.today():
             send_message(product)
             product.is_alerted_about_delivery_date = True

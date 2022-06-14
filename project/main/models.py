@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Product(models.Model):
+class Order(models.Model):
     order_id = models.IntegerField('Заказ №', blank=True)
     price_dollor = models.FloatField('Стоимость, $', blank=True)
     price_rubl = models.FloatField('Стоимость, рубль', blank=True)
@@ -14,3 +14,5 @@ class Product(models.Model):
 
     class Meta:
         ordering = ['pk']
+        verbose_name = 'Заказ'
+        verbose_name_plural = 'Закази'

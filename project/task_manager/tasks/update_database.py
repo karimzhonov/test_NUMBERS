@@ -1,13 +1,13 @@
 from datetime import datetime
 from project.logger import logger
-from ..models import Product
-from ..requests.cbr import dollor2rubl
+from main.models import Order
+from ..requests import dollor2rubl
 from ..requests.sheet import get_sheet
 
 
 def update_database():
     logger.info('Starting update database')
-    products_db = list(Product.objects.all())
+    products_db = list(Order.objects.all())
     for product in get_sheet():
         if _validate_sheet_data(product):
             product['price_rubl'] = dollor2rubl(product['price_dollor'])
@@ -16,11 +16,11 @@ def update_database():
                 product_db = products_db_filtered[0]
                 _update(product_db, product)
             else:
-                product_db = Product.objects.create(**product)
+                product_db = Order.objects.create(**product)
                 logger.debug(f'Product {product_db.order_id} created')
 
 
-def _update(product_db: Product, product: dict):
+def _update(product_db: Order, product: dict):
     save = False
     if product_db.order_id != int(product.get('order_id', None)):
         save = True
